@@ -13,8 +13,9 @@
 #import "Cart.h"
 #import "CartCell.h"
 #import "ProductDetailViewController.h"
+#import "CartViewController.h"
 
-@interface ViewController ()<UITableViewDelegate, UITableViewDataSource, CartDelegate>
+@interface ViewController ()<UITableViewDelegate, UITableViewDataSource, CartDelegate, UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *table;
 @property (strong, nonatomic) Cart* cart;
 
@@ -22,20 +23,6 @@
 
 @implementation ViewController
 
-
--(void)incQuantity:(NSString *)productCode{
-    [self.cart incQuantity:productCode];
-    
-    NSIndexSet* indexSet = [NSIndexSet indexSetWithIndex:1];
-    [self.table reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
-}
-
--(void)decQuantitiy:(NSString *)productCode{
-    [self.cart decQuantitiy:productCode];
-    
-    NSIndexSet* indexSet = [NSIndexSet indexSetWithIndex:1];
-    [self.table reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
-}
 
 // catalog Delegate : addItem
 -(void)addItem:(id)sender{
@@ -46,58 +33,49 @@
     
     // 핵심
     [self.cart addProduct:product];
-    
-    NSIndexSet* indexSet = [NSIndexSet indexSetWithIndex:1];
-    [self.table reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"알림" message:@"카트에 들어갔습니다" delegate:self cancelButtonTitle:@"닫기" otherButtonTitles:@"확인", nil];
+    [alert show];
+//    NSIndexSet* indexSet = [NSIndexSet indexSetWithIndex:1];
+//    [self.table reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
-// section 0 : catalog, section : cart
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 2;
-}
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if(0 == section){
-        return [[catalog defaultCatalog] numberOfProduct];
-    }else{
-        return  self.cart.items.count;
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if(buttonIndex == alertView.firstOtherButtonIndex){
+        self.tabBarController.selectedIndex = 1;
+
     }
 }
 
 
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+
+        return [[catalog defaultCatalog] numberOfProduct];
+}
+
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(0 == indexPath.section){
+//    if(0 == indexPath.section){
         ProductCell* cell = [tableView dequeueReusableCellWithIdentifier:@"PRODUCT_CELL" forIndexPath:indexPath];
         //viewController conduct cell's delegate
         cell.delegate = self;
         Product* product = [[catalog defaultCatalog] productAt:indexPath.row];
         [cell setProductInfo:product];
         return cell;
-    }
-    else{
-        // second section for cart
-        CartCell* cell = (CartCell *)[tableView dequeueReusableCellWithIdentifier:@"CART_CELL" forIndexPath:indexPath];
-        cell.delegate = self;
-        CartItem* cartItem = self.cart.items[indexPath.row];
-        [cell setCarItem:cartItem];
-        return cell;
-    }
+
 }
 
--(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    if(0 == section){
-        return @"Product";
-    }else{
-        return @"Items in Cart";
-    }
-}
 
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.cart = [[Cart alloc]init];
-    self.cart.items = [[NSMutableArray alloc] init];
+    self.cart = [Cart defaultCart];
 	// Do any additional setup after loading the view, typically from a nib.
 }
 

@@ -13,7 +13,7 @@
 
 @interface CartCell : UITableViewCell
 
-@property (weak, nonatomic) id<CartDelegate> delegate;
+@property (weak, nonatomic) id<CartCellDelegate> delegate;
 -(void)setCarItem:(CartItem *)item;
 
 @end

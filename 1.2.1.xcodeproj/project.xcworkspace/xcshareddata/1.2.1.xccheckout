@@ -5,34 +5,34 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>97B7CCE3-2D6A-4C15-9258-F706588CDC56</string>
+	<string>D13D164E-C291-4164-A8C8-665783D5C4C8</string>
 	<key>IDESourceControlProjectName</key>
 	<string>1.2.1</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>0E959E27-71BD-4C57-B5C9-99AEC1E656C4</key>
-		<string>https://github.com/SeungyoupBaek/1.2.1.git</string>
+		<key>CD89D5EC-8835-4CF3-8899-8A77B1FCC93E</key>
+		<string>https://github.com/SeungyoupBaek/1.2.1---Finish.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>1.2.1.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>0E959E27-71BD-4C57-B5C9-99AEC1E656C4</key>
+		<key>CD89D5EC-8835-4CF3-8899-8A77B1FCC93E</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/SeungyoupBaek/1.2.1.git</string>
+	<string>https://github.com/SeungyoupBaek/1.2.1---Finish.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>0E959E27-71BD-4C57-B5C9-99AEC1E656C4</string>
+	<string>CD89D5EC-8835-4CF3-8899-8A77B1FCC93E</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>0E959E27-71BD-4C57-B5C9-99AEC1E656C4</string>
+			<string>CD89D5EC-8835-4CF3-8899-8A77B1FCC93E</string>
 			<key>IDESourceControlWCCName</key>
 			<string>1.2</string>
 		</dict>

@@ -9,14 +9,20 @@
 #import <Foundation/Foundation.h>
 #import "Product.h"
 
+
+
 @protocol CartDelegate <NSObject>
 
 // Add Product to Cart
 -(void)addItem:(id)sender;
 
+
+@end
+
+@protocol CartCellDelegate <NSObject>
+
 // Increase/Decrease Product in Cart
 -(void)incQuantity:(NSString*)productCode;
--(void)decQuantitiy:(NSString*)productCode;
-
+-(void)decQuantity:(NSString*)productCode;
 
 @end

@@ -8,7 +8,6 @@
 
 #import "CartCell.h"
 #import "CartItem.h"
-
 @interface CartCell()
 
 @property(copy, nonatomic) NSString* productCode;
@@ -24,7 +23,7 @@
 }
 
 -(IBAction)minusClicked:(id)sender{
-    [self.delegate decQuantitiy:self.productCode];
+    [self.delegate decQuantity:self.productCode];
 }
 
 

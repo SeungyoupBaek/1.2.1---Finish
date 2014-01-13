@@ -14,6 +14,24 @@
 
 @implementation Cart
 
+-(id)init
+{
+    self = [super init];
+    if (self) {
+        self.items = [[NSMutableArray alloc] init];
+    }
+    
+    return self;
+}
+
+static Cart* _instance = nil;
++(id)defaultCart{
+    if (nil == _instance){
+        _instance = [[Cart alloc]init];
+    }
+    return _instance;
+}
+
 -(void)addProduct:(Product*)item{
     // 카트내 동일 상품 검색
     CartItem *cartItem = [self cartItemsWith:item.code];
@@ -35,7 +53,7 @@
     CartItem* item = [self cartItemsWith:productCode];
     item.quantity++;
 }
--(void)decQuantitiy:(NSString*)productCode{
+-(void)decQuantity:(NSString*)productCode{
     CartItem* item = [self cartItemsWith:productCode];
     item.quantity--;
     
@@ -43,6 +61,8 @@
         [self.items removeObject:item];
     };
 }
+
+
 
 -(CartItem*)cartItemsWith:(NSString*)productCode{
     

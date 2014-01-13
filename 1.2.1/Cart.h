@@ -15,9 +15,10 @@
 
 -(void)addProduct:(Product*)item;
 -(void)incQuantity:(NSString*)productCode;
--(void)decQuantitiy:(NSString*)productCode;
+-(void)decQuantity:(NSString*)productCode;
+
 
 -(CartItem *)cartItemsWith:(NSString*)productCode;
-
++(id)defaultCart;
 
 @end
